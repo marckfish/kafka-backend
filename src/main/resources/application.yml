@@ -1,0 +1,23 @@
+server:
+  port: 9392
+  servlet:
+    context-path: /api
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 300MB
+      max-request-size: 300MB
+logging:
+  level:
+    # Hides HHH000424: Disabling contextual LOB creation as createClob() method threw error
+    org.hibernate.engine.jdbc.env.internal.LobCreatorBuilderImpl: WARN
+    org.springframework.security: INFO
+  file: /var/log/server-api.log
+
+#Inclure tous les endpoints pour le monitoring
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ['*']
